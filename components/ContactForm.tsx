@@ -156,7 +156,7 @@ export default function ContactForm() {
                     </div>
                     <input
                       type="tel"
-                      placeholder="+1 (234) 567-890"
+                      placeholder="+91 96655 47502"
                       className="w-full border-2 border-gray-200 rounded-xl px-4 pl-12 py-3.5 text-sm sm:text-base focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all"
                       value={form.phone}
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
