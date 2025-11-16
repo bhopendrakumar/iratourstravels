@@ -1,15 +1,43 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [logoError, setLogoError] = useState(false);
 
   return (
     <nav className="bg-white shadow-md fixed w-full z-10">
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-        <h1 className="text-lg sm:text-xl font-bold text-blue-600">IRA Tours & Travels</h1>
+        <Link href="/" className="flex items-center gap-2 sm:gap-3 hover:opacity-80 transition-opacity group">
+          {!logoError && (
+            <div className="relative h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 flex-shrink-0">
+              <Image
+                src="/logo.png"
+                alt="IRA Tours & Travels Logo"
+                fill
+                className="object-contain"
+                priority
+                sizes="(max-width: 640px) 48px, (max-width: 768px) 56px, 64px"
+                onError={() => setLogoError(true)}
+              />
+            </div>
+          )}
+          {logoError && (
+            <div className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 flex-shrink-0 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-lg sm:text-xl md:text-2xl">I</span>
+            </div>
+          )}
+          <div className="flex flex-col hidden sm:flex">
+            <span className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600 leading-tight group-hover:text-blue-700 transition-colors">IRA</span>
+            <span className="text-xs sm:text-sm md:text-base text-blue-600 font-semibold leading-tight">TOURS & TRAVELS</span>
+          </div>
+          <div className="flex sm:hidden">
+            <span className="text-lg font-bold text-blue-600">IRA Tours & Travels</span>
+          </div>
+        </Link>
         <div className="flex items-center gap-2 sm:gap-4">
           <div className={`absolute top-full left-0 right-0 bg-white shadow-lg md:shadow-none md:static md:bg-transparent md:flex md:space-x-4 transition-all duration-300 ${
             isMenuOpen ? 'block' : 'hidden md:flex'

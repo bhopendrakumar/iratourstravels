@@ -454,7 +454,7 @@ export default function HomePage() {
               Get Free Quote
             </a>
             <a
-              href="tel:+1234567890"
+              href="tel:+919685547502"
               className="inline-block bg-white/10 backdrop-blur-md text-white border-2 border-white/30 px-8 py-4 rounded-lg hover:bg-white/20 text-lg font-bold transition-all duration-300"
             >
               Call Us Now
